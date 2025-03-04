@@ -1,0 +1,9 @@
+# Carpetas y archivos generados automáticamente
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Archivos de salida del proyecto
+grobid_output/
+papers/

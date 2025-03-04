@@ -1,0 +1,20 @@
+services:
+  grobid:
+    image: lfoppiano/grobid:latest-full
+    container_name: grobid_service
+    ports:
+      - "8070:8070"
+    restart: unless-stopped
+
+  iaoptativa:
+    build: .
+    container_name: iaoptativa_container
+    depends_on:
+      - grobid
+    volumes:
+      - ./papers:/app/papers
+      - ./grobid_output:/app/grobid_output
+    environment:
+      - GROBID_URL=http://grobid:8070
+      - RUN_ENV=docker
+
